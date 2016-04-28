@@ -1,7 +1,7 @@
 import sched, time
 import urllib2
 from HTMLParser import HTMLParser
-import emailtest
+import sendEmail
 import os, sys, time
 
 
@@ -51,22 +51,14 @@ def do_something(sc):
     sc.enter(5, 1, do_something, (sc,))
 
 
-# def startTack():
-s = sched.scheduler(time.time, time.sleep)
-s.enter(5, 1, do_something, (s,))
-s.run()
+def startTack():
+    s = sched.scheduler(time.time, time.sleep)
+    s.enter(5, 1, do_something, (s,))
+    s.run()
 
 
-# def main():
-#     print "AutoRes is starting"
-#     executable = sys.executable
-#     args = sys.argv[:]
-#     args.insert(0, sys.executable)
-#
-#     time.sleep(1)
-#     print "Respawning"
-#     startTack()
-#     os.execvp(executable, args)
-#
-# if __name__ == "__main__":
-#     main()
+def main():
+    startTack()
+
+if __name__ == "__main__":
+    main()

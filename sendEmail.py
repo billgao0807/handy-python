@@ -2,13 +2,14 @@ import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
-def notificateMe(msgToSent):
+def notificateMe(msgToSent = "no massage passed in"):
+# def notificateMe():
     fromaddr = "ovenma.96@gmail.com"
     toaddr = "billgao0807@gmail.com"
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
-    msg['Subject'] = "email test"
+    msg['Subject'] = "From Hat's Python script: "
 
     body = msgToSent
     msg.attach(MIMEText(body, 'plain'))
@@ -23,13 +24,10 @@ def notificateMe(msgToSent):
     server.quit
     return
 
+def main():
+    notificateMe()
 
-# import smtplib
-#
-# server = smtplib.SMTP('smtp.gmail.com', 587)
-# server.starttls()
-# server.login("billgao0807@gmail.com", "40bcef5551")
-#
-# msg = "YOUR MESSAGE!"
-# server.sendmail("YOUR EMAIL ADDRESS", "THE EMAIL ADDRESS TO SEND TO", msg)
-# server.quit()
+# Standard boilerplate to call the main() function to begin
+# the program.
+if __name__ == '__main__':
+    main()
